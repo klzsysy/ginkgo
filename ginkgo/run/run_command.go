@@ -191,10 +191,8 @@ OUTER_LOOP:
 		}
 	} else {
 		fmt.Fprintln(formatter.ColorableStdOut, "")
-		if len(suites) > 1 && suites.CountWithState(internal.TestSuiteStateFailureStates...) > 0 {
-			fmt.Fprintln(formatter.ColorableStdOut,
-				internal.FailedSuitesReport(suites, formatter.NewWithNoColorBool(r.reporterConfig.NoColor)))
-		}
+		fmt.Fprintln(formatter.ColorableStdOut,
+			internal.FailedSuitesReport(suites, formatter.NewWithNoColorBool(r.reporterConfig.NoColor)))
 		fmt.Printf("Test Suite Failed\n")
 		command.Abort(command.AbortDetails{ExitCode: 1})
 	}
